@@ -52,16 +52,16 @@ SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress)+1, LEN(PropertyAddres
 From PortfolioProject..NashvilleHousing
 
 ALTER TABLE NashvilleHousing
-ADD SplitPropertyAddress Nvarchar(255);
+ADD PropertySplitAddress Nvarchar(255);
 
 UPDATE NashvilleHousing
-SET SplitPropertyAddress = SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress)-1)
+SET PropertySplitAddress = SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress)-1)
 
 ALTER TABLE NashvilleHousing
-ADD SplitPropertyCity Nvarchar(255);
+ADD PropertySplitCity Nvarchar(255);
 
 UPDATE NashvilleHousing
-SET SplitPropertyCity = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress)+1, LEN(PropertyAddress))
+SET PropertySplitCity = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress)+1, LEN(PropertyAddress))
 
 
 
@@ -139,7 +139,4 @@ Select *
 From PortfolioProject..NashvilleHousing
 
 ALTER TABLE PortfolioProject..NashvilleHousing
-DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress
-
-ALTER TABLE PortfolioProject..NashvilleHousing
-DROP COLUMN SaleDate
+DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress, SaleDate
